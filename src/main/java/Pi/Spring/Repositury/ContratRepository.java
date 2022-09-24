@@ -15,4 +15,6 @@ public interface ContratRepository extends CrudRepository<Contrat, Long>{
 	@Query("SELECT c FROM Contrat c")
 	@Transactional
 	public List<Contrat> retrieveAllContrats(Contrat contrat);
+	
+	
 }

@@ -19,8 +19,9 @@ public class LogementServiceImpl implements LogementService{
 	
 
 	@Override
-	public void addLogement(Logement logement) {
+	public String addLogement(Logement logement) {
 		logementRepo.save(logement);
+		return null;
 		
 	}
 
@@ -31,9 +32,9 @@ public class LogementServiceImpl implements LogementService{
 	}
 
 	@Override
-	public List<Logement> findAllLogement(Logement logement) {
+	public List<Logement> findAllLogement() {
 		
-		return logementRepo.retrieveAllLogements(logement);
+		return logementRepo.findAll();
 	}
 
 	@Override
@@ -41,5 +42,13 @@ public class LogementServiceImpl implements LogementService{
 		
 		return logementRepo.findById(idLogement).orElse(null); 
 	}
+
+	@Override
+	public Logement retrievePostById(Long idLogement) {
+		
+		return logementRepo.findById(idLogement).orElse(null);
+	}
+
+
 
 }

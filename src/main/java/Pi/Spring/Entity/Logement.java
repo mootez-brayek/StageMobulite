@@ -10,7 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,13 +23,12 @@ public class Logement implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long idLogement;
-	private float prix;
+	private int prix;
 	private String adresse;
 	private int nbrChambre;
 	@Enumerated(EnumType.STRING)
 	private Type type;
 	private String dateDebut;
-	private int dure;
 	private String image;
 
 	@JsonIgnore
@@ -47,12 +46,12 @@ public class Logement implements Serializable{
 	}
 
 
-	public float getPrix() {
+	public int getPrix() {
 		return prix;
 	}
 
 
-	public void setPrix(float prix) {
+	public void setPrix(int prix) {
 		this.prix = prix;
 	}
 
@@ -87,24 +86,9 @@ public class Logement implements Serializable{
 	}
 
 
-	public String getDateDebut() {
-		return dateDebut;
-	}
 
 
-	public void setDateDebut(String dateDebut) {
-		this.dateDebut = dateDebut;
-	}
 
-
-	public int getDure() {
-		return dure;
-	}
-
-
-	public void setDure(int dure) {
-		this.dure = dure;
-	}
 
 
 	public String getImage() {
@@ -124,6 +108,16 @@ public class Logement implements Serializable{
 
 	public void setContrats(List<Contrat> contrats) {
 		this.contrats = contrats;
+	}
+
+
+	public String getDateDebut() {
+		return dateDebut;
+	}
+
+
+	public void setDateDebut(String dateDebut) {
+		this.dateDebut = dateDebut;
 	}
 	
 	

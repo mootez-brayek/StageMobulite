@@ -38,8 +38,7 @@ public class ContratServiceImpl implements ContratService{
 		contrat.setNbrChambre(logement.getNbrChambre());
 		contrat.setType(logement.getType());
 		contrat.setPrix(logement.getPrix());
-		contrat.setDebut(logement.getDateDebut());
-		contrat.setDure(logement.getDure());
+	
 		contratRepo.save(contrat);
 		
 		

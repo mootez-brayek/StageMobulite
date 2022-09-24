@@ -1,30 +1,36 @@
 package Pi.Spring.Entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.List;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+
 public class Condidat implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCondidat;
 	
 	private Long cin;
@@ -34,7 +40,11 @@ public class Condidat implements Serializable{
 	private Long telephone;
 	private String nom;
 	private String prenom;
-	private String password;
+	
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	private Collection<Role> roles = new ArrayList<>();
+	
 	
 	@JsonIgnore
 	@OneToOne(cascade=CascadeType.ALL,mappedBy="condidat")
@@ -111,16 +121,6 @@ public class Condidat implements Serializable{
 	}
 
 
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
 	public Contrat getContrat() {
 		return contrat;
 	}
@@ -130,6 +130,36 @@ public class Condidat implements Serializable{
 		this.contrat = contrat;
 	}
 
+
+
+
+
+	public Collection<Role> getRoles() {
+		return roles;
+	}
+
+
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
+	}
+
+
+	public Condidat(Long idCondidat, Long cin, int age, String email, Long telephone, String nom, String prenom,
+			String password, String picture) {
+		super();
+		this.idCondidat = idCondidat;
+		this.cin = cin;
+		this.age = age;
+		this.email = email;
+		this.telephone = telephone;
+		this.nom = nom;
+		this.prenom = prenom;
+	
+	}
+
+	
+	
+	
 	
 	
 	
