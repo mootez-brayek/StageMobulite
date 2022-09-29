@@ -27,6 +27,7 @@ public class ContratController {
 	ContratService contratService;
 	
 	
+	
 	@PostMapping("/add/{idLogement}/{idCondidat}")
 	@ResponseBody
 	public void addAndAffectContrat(@RequestBody Contrat contrat,@PathVariable("idLogement")Long idLogement,@PathVariable("idCondidat")Long idCondidat){

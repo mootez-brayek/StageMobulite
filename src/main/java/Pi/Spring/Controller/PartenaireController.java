@@ -35,6 +35,7 @@ public List<partenaires> GetAllPartenaires() {
 @GetMapping("/GetAllByActivity/{activity}")
 @ResponseBody
 public List<partenaires> GetAllByActivity(@PathVariable(value="activity") String activity) {
+
 	return partenaireService.GetAllByActivity(activity);
 }
 
